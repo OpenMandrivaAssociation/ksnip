@@ -6,6 +6,7 @@ License:	GPLv2+
 Group:		Graphical desktop/KDE
 URL:		https://github.com/ksnip/ksnip
 Source:		https://github.com/ksnip/ksnip/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:   ace3ec855f7d5b90c2df0872d8cd0f84e3aaa657.patch
 
 BuildRequires: cmake
 BuildRequires: qmake5
@@ -31,7 +32,7 @@ Ksnip is a Qt based cross-platform screenshot tool that provides many
 annotation features for your screenshots.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake
