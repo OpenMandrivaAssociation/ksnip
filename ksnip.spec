@@ -7,23 +7,24 @@ Group:		Graphical desktop/KDE
 URL:		https://github.com/ksnip/ksnip
 Source:		https://github.com/ksnip/ksnip/archive/v%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires:	cmake
-BuildRequires:	cmake(ECM)
-BuildRequires:	cmake(kColorPicker)
-BuildRequires:	cmake(kImageAnnotator)
+BuildRequires: cmake
+BuildRequires: qmake5
+BuildRequires: cmake(ECM)
+BuildRequires: cmake(kColorPicker)
+BuildRequires: cmake(kImageAnnotator)
 
-BuildRequires:	pkgconfig(Qt5Concurrent)
-BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5DBus)
-BuildRequires:	pkgconfig(Qt5Gui)
-BuildRequires:	pkgconfig(Qt5Help)
-BuildRequires:	pkgconfig(Qt5Network)
-BuildRequires:	pkgconfig(Qt5PrintSupport)
-BuildRequires:	pkgconfig(Qt5Widgets)
-BuildRequires:	pkgconfig(Qt5X11Extras)
-BuildRequires:	pkgconfig(Qt5Xml)
-BuildRequires:	pkgconfig(x11)
-BuildRequires:	pkgconfig(xcb-xfixes)
+BuildRequires: pkgconfig(Qt5Concurrent)
+BuildRequires: pkgconfig(Qt5Core)
+BuildRequires: pkgconfig(Qt5DBus)
+BuildRequires: pkgconfig(Qt5Gui)
+BuildRequires: pkgconfig(Qt5Help)
+BuildRequires: pkgconfig(Qt5Network)
+BuildRequires: pkgconfig(Qt5PrintSupport)
+BuildRequires: pkgconfig(Qt5Widgets)
+BuildRequires: pkgconfig(Qt5X11Extras)
+BuildRequires: pkgconfig(Qt5Xml)
+BuildRequires: pkgconfig(x11)
+BuildRequires: pkgconfig(xcb-xfixes)
 
 %description
 Ksnip is a Qt based cross-platform screenshot tool that provides many
@@ -33,11 +34,11 @@ annotation features for your screenshots.
 %setup -q
 
 %build
-%cmake_qt5
-%cmake_build
+%cmake
+%make_build
 
 %install
-%cmake_install
+%make_install -C build
 
 %find_lang %{name} --with-qt
 
