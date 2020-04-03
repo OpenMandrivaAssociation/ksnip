@@ -27,8 +27,8 @@ BuildRequires: pkgconfig(Qt5Xml)
 BuildRequires: pkgconfig(x11)
 BuildRequires: pkgconfig(xcb-xfixes)
 
-Obsoletes:    %{_lib}kcolorpicker* =< 0.1.1-1
-Obsoletes:    %{_lib}kimageannotator* =< 0.2.1-1
+Obsoletes:    %{_lib}kcolorpicker%{major} =< 0.1.1-1
+Obsoletes:    %{_lib}kimageannotator%{major} =< 0.2.1-1
 
 %description
 Ksnip is a Qt based cross-platform screenshot tool that provides many
