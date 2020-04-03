@@ -1,6 +1,6 @@
 Name:		ksnip
 Version:	1.6.1
-Release:	1
+Release:	2
 Summary:	Screenshot tool
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -11,8 +11,8 @@ Patch0:   ace3ec855f7d5b90c2df0872d8cd0f84e3aaa657.patch
 BuildRequires: cmake
 BuildRequires: qmake5
 BuildRequires: cmake(ECM)
-BuildRequires: cmake(kColorPicker)
-BuildRequires: cmake(kImageAnnotator)
+BuildRequires: cmake(kColorPicker) >= 0.1.1-2
+BuildRequires: cmake(kImageAnnotator) >= 0.2.1-2
 
 BuildRequires: pkgconfig(Qt5Concurrent)
 BuildRequires: pkgconfig(Qt5Core)
