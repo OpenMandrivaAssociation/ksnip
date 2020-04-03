@@ -1,6 +1,6 @@
 Name:		ksnip
 Version:	1.6.1
-Release:	2
+Release:	3
 Summary:	Screenshot tool
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -26,6 +26,9 @@ BuildRequires: pkgconfig(Qt5X11Extras)
 BuildRequires: pkgconfig(Qt5Xml)
 BuildRequires: pkgconfig(x11)
 BuildRequires: pkgconfig(xcb-xfixes)
+
+Obsoletes:    %{_lib}kcolorpicker%{major} =< 0.1.1-1
+Obsoletes:    %{_lib}kimageannotator%{major} =< 0.2.1-1
 
 %description
 Ksnip is a Qt based cross-platform screenshot tool that provides many
