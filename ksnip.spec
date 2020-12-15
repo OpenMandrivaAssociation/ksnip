@@ -51,6 +51,6 @@ annotation features for your screenshots.
 %doc CHANGELOG.md CODINGSTYLE README.md
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
-#{_metainfodir}/org.ksnip.ksnip.appdata.xml
+%{_metainfodir}/org.ksnip.ksnip.appdata.xml
 %{_datadir}/applications/org.ksnip.ksnip.desktop
 %{_iconsdir}/hicolor/scalable/apps/ksnip.svg
