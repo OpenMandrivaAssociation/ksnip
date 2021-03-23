@@ -1,5 +1,5 @@
 Name:		ksnip
-Version:	1.8.0
+Version:	1.8.2
 Release:	1
 Summary:	Screenshot tool
 License:	GPLv2+
@@ -10,8 +10,8 @@ Source:		https://github.com/ksnip/ksnip/archive/v%{version}/%{name}-%{version}.t
 BuildRequires: cmake
 BuildRequires: qmake5
 BuildRequires: cmake(ECM)
-BuildRequires: cmake(kColorPicker) >= 0.1.4
-BuildRequires: cmake(kImageAnnotator) >= 0.3.1
+BuildRequires: cmake(kColorPicker) >= 0.1.5
+BuildRequires: cmake(kImageAnnotator) >= 0.4.2
 
 BuildRequires: pkgconfig(Qt5Concurrent)
 BuildRequires: pkgconfig(Qt5Core)
