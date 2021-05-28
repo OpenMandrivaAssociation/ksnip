@@ -47,8 +47,7 @@ annotation features for your screenshots.
 %find_lang %{name} --with-qt
 
 %files
-%license LICENSE
-%doc CHANGELOG.md CODINGSTYLE README.md
+%doc CHANGELOG.md README.md
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_metainfodir}/org.ksnip.ksnip.appdata.xml
