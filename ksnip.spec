@@ -1,5 +1,5 @@
 Name:		ksnip
-Version:	1.8.2
+Version:	1.9.0
 Release:	1
 Summary:	Screenshot tool
 License:	GPLv2+
