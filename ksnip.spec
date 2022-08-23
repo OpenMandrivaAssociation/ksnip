@@ -1,6 +1,6 @@
 Name:		ksnip
-Version:	1.9.0
-Release:	2
+Version:	1.10.0
+Release:	1
 Summary:	Screenshot tool
 License:	GPLv2+
 Group:		Graphical desktop/KDE
