@@ -1,0 +1,30 @@
+diff -up ksnip-master/src/CMakeLists.txt.omv~ ksnip-master/src/CMakeLists.txt
+--- ksnip-master/src/CMakeLists.txt.omv~	2024-02-28 22:25:59.514805159 +0100
++++ ksnip-master/src/CMakeLists.txt	2024-02-28 22:26:57.375439914 +0100
+@@ -265,7 +265,7 @@ set(DEPENDENCY_LIBRARIES
+ if (APPLE)
+         list(APPEND DEPENDENCY_LIBRARIES
+                 kImageAnnotator::kImageAnnotator
+-                kColorPicker::kColorPicker
++                kColorPicker-Qt5
+                 "-framework CoreGraphics -framework AppKit"
+                 )
+ elseif (UNIX)
+@@ -273,7 +273,7 @@ elseif (UNIX)
+                 Qt5::DBus
+                 Qt5::X11Extras
+                 kImageAnnotator::kImageAnnotator
+-                kColorPicker::kColorPicker
++                kColorPicker-Qt5
+                 XCB::XFIXES
+                 )
+ 
+@@ -294,7 +294,7 @@ elseif (WIN32)
+         list(APPEND DEPENDENCY_LIBRARIES
+                 Qt5::WinExtras
+ 				kImageAnnotator::kImageAnnotator
+-                kColorPicker
++                kColorPicker-Qt5
+                 Dwmapi
+                 )
+ endif ()

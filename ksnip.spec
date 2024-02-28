@@ -1,48 +1,49 @@
+%define gitbranch master
+%define gitbranchd %(echo %{gitbranch} |sed -e 's,/,-,g')
+%define gitdate 20240228
+
 Name:		ksnip
-Version:	1.10.1
-Release:	2
+Version:	1.11.0
+Release:	%{?gitdate:0.%{gitdate}.}1
 Summary:	Screenshot tool
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 URL:		https://github.com/ksnip/ksnip
-Source:		https://github.com/ksnip/ksnip/archive/v%{version}/%{name}-%{version}.tar.gz
+Source:		https://github.com/ksnip/ksnip/archive/%{?gitdate:%{gitbranch}}%{!?gitdate:v%{version}}/%{name}-%{?gitdate:%{gitbranchd}}%{!?gitdate:%{version}}.tar.gz
+Patch0:		ksnip-compile.patch
 
 BuildRequires: cmake
-BuildRequires: qmake5
 BuildRequires: cmake(ECM)
-BuildRequires: cmake(kColorPicker) >= 0.1.5
-BuildRequires: cmake(kImageAnnotator) >= 0.4.2
-
-BuildRequires: pkgconfig(Qt5Concurrent)
-BuildRequires: pkgconfig(Qt5Core)
-BuildRequires: pkgconfig(Qt5DBus)
-BuildRequires: pkgconfig(Qt5Gui)
-BuildRequires: pkgconfig(Qt5Help)
-BuildRequires: pkgconfig(Qt5Network)
-BuildRequires: pkgconfig(Qt5PrintSupport)
-BuildRequires: pkgconfig(Qt5Svg)
-BuildRequires: pkgconfig(Qt5Widgets)
-BuildRequires: pkgconfig(Qt5X11Extras)
-BuildRequires: pkgconfig(Qt5Xml)
+BuildRequires: cmake(kColorPicker-Qt5)
+BuildRequires: cmake(kImageAnnotator-Qt5)
+BuildRequires: cmake(Qt5Concurrent)
+BuildRequires: cmake(Qt5Core)
+BuildRequires: cmake(Qt5DBus)
+BuildRequires: cmake(Qt5Gui)
+BuildRequires: cmake(Qt5Help)
+BuildRequires: cmake(Qt5Network)
+BuildRequires: cmake(Qt5PrintSupport)
+BuildRequires: cmake(Qt5Svg)
+BuildRequires: cmake(Qt5Widgets)
+BuildRequires: cmake(Qt5X11Extras)
+BuildRequires: cmake(Qt5Xml)
 BuildRequires: pkgconfig(x11)
 BuildRequires: pkgconfig(xcb-xfixes)
-
-Obsoletes:    %{_lib}kcolorpicker%{major} =< 0.1.1-1
-Obsoletes:    %{_lib}kimageannotator%{major} =< 0.2.1-1
 
 %description
 Ksnip is a Qt based cross-platform screenshot tool that provides many
 annotation features for your screenshots.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{?gitdate:%{gitbranchd}}%{!?gitdate:%{version}}
+%cmake \
+	-G Ninja
 
 %build
-%cmake
-%make_build
+%ninja_build -C build
 
 %install
-%make_install -C build
+%ninja_install -C build
 
 %find_lang %{name} --with-qt
 
