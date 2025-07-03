@@ -1,32 +1,33 @@
 %define gitbranch master
 %define gitbranchd %(echo %{gitbranch} |sed -e 's,/,-,g')
-%define gitdate 20240228
+%define gitdate 20250515
 
 Name:		ksnip
-Version:	1.11.0
-Release:	%{?gitdate:0.%{gitdate}.}1
+Version:	1.11.0%{?gitdate:~0.%{gitdate}.}
+Release:	1
 Summary:	Screenshot tool
-License:	GPLv2+
+License:	GPLv3
 Group:		Graphical desktop/KDE
 URL:		https://github.com/ksnip/ksnip
-Source:		https://github.com/ksnip/ksnip/archive/%{?gitdate:%{gitbranch}}%{!?gitdate:v%{version}}/%{name}-%{?gitdate:%{gitbranchd}}%{!?gitdate:%{version}}.tar.gz
-Patch0:		ksnip-compile.patch
+Source:		https://github.com/ksnip/ksnip/archive/%{?gitdate:%{gitbranch}}%{!?gitdate:v%{version}}.tar.gz#/%{name}-%{?gitdate:%{gitbranchd}-%{gitdate}}%{!?gitdate:%{version}}.tar.gz
 
-BuildRequires: cmake
+BuildSystem:   cmake
+BuildOption:   -DBUILD_WITH_QT6:BOOL=ON
+
 BuildRequires: cmake(ECM)
-BuildRequires: cmake(kColorPicker-Qt5)
-BuildRequires: cmake(kImageAnnotator-Qt5)
-BuildRequires: cmake(Qt5Concurrent)
-BuildRequires: cmake(Qt5Core)
-BuildRequires: cmake(Qt5DBus)
-BuildRequires: cmake(Qt5Gui)
-BuildRequires: cmake(Qt5Help)
-BuildRequires: cmake(Qt5Network)
-BuildRequires: cmake(Qt5PrintSupport)
-BuildRequires: cmake(Qt5Svg)
-BuildRequires: cmake(Qt5Widgets)
-BuildRequires: cmake(Qt5X11Extras)
-BuildRequires: cmake(Qt5Xml)
+BuildRequires: cmake(kColorPicker-Qt6)
+BuildRequires: cmake(kImageAnnotator-Qt6)
+BuildRequires: cmake(Qt6Concurrent)
+BuildRequires: cmake(Qt6Core)
+BuildRequires: cmake(Qt6DBus)
+BuildRequires: cmake(Qt6Gui)
+BuildRequires: cmake(Qt6Help)
+BuildRequires: cmake(Qt6Network)
+BuildRequires: cmake(Qt6PrintSupport)
+BuildRequires: cmake(Qt6Svg)
+BuildRequires: cmake(Qt6Widgets)
+BuildRequires: cmake(Qt6Xml)
+BuildRequires: cmake(Qt6LinguistTools)
 BuildRequires: pkgconfig(x11)
 BuildRequires: pkgconfig(xcb-xfixes)
 
@@ -34,21 +35,11 @@ BuildRequires: pkgconfig(xcb-xfixes)
 Ksnip is a Qt based cross-platform screenshot tool that provides many
 annotation features for your screenshots.
 
-%prep
-%autosetup -p1 -n %{name}-%{?gitdate:%{gitbranchd}}%{!?gitdate:%{version}}
-%cmake \
-	-G Ninja
-
-%build
-%ninja_build -C build
-
-%install
-%ninja_install -C build
-
 %find_lang %{name} --with-qt
 
 %files
 %doc CHANGELOG.md README.md
+%license LICENSE.txt
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_metainfodir}/org.ksnip.ksnip.appdata.xml
