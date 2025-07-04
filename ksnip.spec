@@ -3,8 +3,8 @@
 %define gitdate 20250515
 
 Name:		ksnip
-Version:	1.11.0%{?gitdate:~0.%{gitdate}.}
-Release:	1
+Version:	1.11.0%{?gitdate:~%{gitdate}}
+Release:	2
 Summary:	Screenshot tool
 License:	GPLv3
 Group:		Graphical desktop/KDE
