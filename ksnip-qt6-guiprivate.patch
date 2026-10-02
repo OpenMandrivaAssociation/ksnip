@@ -1,0 +1,14 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -57,6 +57,11 @@ endif()
+ if (UNIX AND NOT APPLE)
+	list(APPEND QT_COMPONENTS Concurrent)
+ endif()
++
++# Qt 6.12 defines Qt6::GuiPrivate only when that component is requested.
++if (BUILD_WITH_QT6)
++	list(APPEND QT_COMPONENTS GuiPrivate)
++endif()
+ 
+ if (X11_FOUND AND NOT BUILD_WITH_QT6)
+	list(APPEND QT_COMPONENTS X11Extras)

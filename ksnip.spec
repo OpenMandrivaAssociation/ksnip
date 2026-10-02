@@ -10,6 +10,8 @@ License:	GPLv3
 Group:		Graphical desktop/KDE
 URL:		https://github.com/ksnip/ksnip
 Source:		https://github.com/ksnip/ksnip/archive/%{?gitdate:%{gitbranch}}%{!?gitdate:v%{version}}.tar.gz#/%{name}-%{?gitdate:%{gitbranchd}-%{gitdate}}%{!?gitdate:%{version}}.tar.gz
+# Qt 6.12 creates Qt6::GuiPrivate only when the component is requested.
+Patch0:		ksnip-qt6-guiprivate.patch
 
 BuildSystem:   cmake
 BuildOption:   -DBUILD_WITH_QT6:BOOL=ON
@@ -21,6 +23,7 @@ BuildRequires: cmake(Qt6Concurrent)
 BuildRequires: cmake(Qt6Core)
 BuildRequires: cmake(Qt6DBus)
 BuildRequires: cmake(Qt6Gui)
+BuildRequires: cmake(Qt6GuiPrivate)
 BuildRequires: cmake(Qt6Help)
 BuildRequires: cmake(Qt6Network)
 BuildRequires: cmake(Qt6PrintSupport)
